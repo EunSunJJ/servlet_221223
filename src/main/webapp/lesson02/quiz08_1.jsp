@@ -63,26 +63,31 @@
 	%>
 	
 	<%
-			// 파라미터 꺼내기	
-		String id = response.getParameter();
+			// 파라미터 꺼내기	xxxx
+			// 보여줄 책 정보 뽑아내기
+		int id = Integer.valueOf(request.getParameter("id"));
+		Map<String, Object> target = new HashMap<>();
+		for (Map<String, Object> book : list) {	
+			if((Integer)book.get("id") == id) {
+				target = book;
+				break;
+			}
+		}
 	%>
 	
-	<%
-		for (Map<String, Object> book : list) {				
-	%>
 		
-					
-		<div class="container d-flex">
-			<img src="<%= book.get("image") %>" alt="책이미지" width="100" height="150">
+		<div class="container">
+			<div class="d-flex">
+				<div>
+					<img src="<%= target.get("image") %>" alt="표지" width="300">
+				</div>
 				
-			<div>
-				<h1><%= book.get("title") %></h1>					
-				<%= book.get("author") %> <br>
-				<%= book.get("publisher") %>
+				<div>
+					<div class="display-1 font-weight-bold"><%= target.get("title") %></div>					
+					<div class="display-3 text-info"><%= target.get("author") %> <br></div>
+					<div class="display-4 text-secondary"><%= target.get("publisher") %></div>
+				</div>
 			</div>
-	<%
-		}
-	%>			
 		</div>
 
 </body>

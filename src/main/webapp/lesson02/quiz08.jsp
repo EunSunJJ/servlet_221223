@@ -64,7 +64,7 @@
 	%>
 	
 	<div class="container">
-		<h2 class="text-center">책 목록</h2>
+		<h1 class="text-center">책 목록</h1>
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -79,9 +79,12 @@
 					%>
 					<tr>
 						<td><%= book.get("id") %></td>
-						<td> <img src="<%= book.get("image") %>" alt="책이미지" width="100" height="150"></td>
-						<td><a href="/lesson02/quiz08_1.jsp?id=1000"> <%= book.get("title") %> </a></td>
-						<!-- a태그의 주소값은 다 다른데 어떻게 연결하지? -->
+						<td> <img src="<%= book.get("image") %>" alt="표지" width="50"></td>
+						<td>
+						<a href="/lesson02/quiz08_1.jsp?id=<%= book.get("id") %>"> <%= book.get("title") %> </a>
+						</td>
+						<!-- a태그의 주소값은 다 다른데 어떻게 연결하지? --><!-- 막힌 부분 -->
+						<!-- request parameter를 보내줘야해 id로 보내주기 -->
 					</tr>
 					
 					<%
