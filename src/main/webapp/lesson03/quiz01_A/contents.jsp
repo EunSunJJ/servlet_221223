@@ -1,6 +1,7 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<table class="table text-center">
 
 <%
     List<Map<String, String>> list = new ArrayList<>();
@@ -41,37 +42,33 @@
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
 %>
-
-    <section class="contents bg-info">
-		<table class="table text-center">
-			<thead>
-				<tr>
-					<th>채널</th>
-					<th>채널명</th>
-					<th>카테고리</th>
-				</tr>
-			</thead>
-			<tbody>
-				
-			
-				<%
-					for(Map<String, String> program : list) {
+				<thead>
+					<tr>
+						<th>채널</th>
+						<th>채널명</th>
+						<th>카테고리</tr>
+					<tbody>
+					<%
 						String category = request.getParameter("category");
-						if(program.get("category").equalsIgnoreCase(category)) {
-							out.print("category");
-						}
+						// out.print("category");
 						
-				%>
-				<tr>
-					<td><%= program.get("ch") %></td>
-					<td><%= program.get("name") %></td>
-					<td><%= program.get("category") %></td>
+						for (Map<String,String> item : list) {
+							// 뿌리는 조건을 if문으로 걸어주기
+							// 전체 -> 카테고리=null  또는
+							// 파라미터와 카테고리가 일치되는 경우 
+							if(category == null || item.get("category").equals(category) ) {
+
+					%>
+						<tr>
+							<td><%=item.get("ch") %></td>
+							<td><%=item.get("name") %></td>
+							<td><%=item.get("category") %></td>
+					<%
+							}
+						}
+					%>
+						</tr>
+					</tbody>
 					
-				</tr>
-				<%
-					}
-				%>
-			</tbody>
-			
-		</table>
-	</section>
+				</thead>
+</table>
