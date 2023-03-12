@@ -17,7 +17,7 @@
 	</p>
 	
 	<div class="container">
-		<form method="get" atction="/lesson02/quiz03_1.jsp">
+		<form method="get" action="/lesson02/quiz03_1.jsp">
 			<div class="d-flex">
 			<label for="height"></label>
 			<input type="text" name="height" id="height" class="form-control col-3" placeholder="키를 입력하세요."><span class="mt-3 ml-1">cm</span>
