@@ -21,7 +21,7 @@
 	ms.connect();
 	
 	// data 불러왔어
-	String selectQuery = "select * from `site` order by 'id' desc ";
+	String selectQuery = "select * from `site`";
 	ResultSet res =ms.select(selectQuery);  // import해서 사용하기
 %>
 
@@ -42,7 +42,7 @@
 			<tr>
 				<td><%= res.getString("name") %></td>
 				<td><%= res.getString("url") %></td>
-				<td><a href="lesson04/delete_quiz02id=<%= res.getInt("id") %>">삭제</a></td>
+				<td><a href="lesson04/delete_quiz02?id=<%= res.getInt("id") %>">삭제</a></td>
 			</tr>
 		<%
 			}
